@@ -42,7 +42,7 @@ from setuptools import setup
 __plugin_name__ = "IPstatusbar"
 __author__ = "Calum Lind"
 __author_email__ = "calumlind+deluge@gmail.com"
-__version__ = "0.1"
+__version__ = "0.2"
 __url__ = "http://deluge-torrent.org"
 __license__ = "GPLv3"
 __description__ = "Display External IP Address in Statusbar"
