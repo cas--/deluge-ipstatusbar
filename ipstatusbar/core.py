@@ -50,6 +50,7 @@ class Core(CorePluginBase):
         self.alerts = component.get("AlertManager")
         # Register alert functions
         self.alerts.register_handler("external_ip_alert", self.on_alert_external_ip)
+        self.ext_ip_address = ""
 
     def disable(self):
         pass
@@ -60,11 +61,10 @@ class Core(CorePluginBase):
     def on_alert_external_ip(self, alert):
         log.debug("on_alert_external_ip")
         # Message Format: "external IP received: 0.0.0.0"
-        ip_addr = alert.message().split(':')[1].strip()
+        self.ext_ip_address = alert.message().split(':')[1].strip()
         log.info("address: %r", ip_addr)
 
-ext_ip_address = urlopen('http://ifconfig.me/ip').read().rstrip()
+        #ext_ip_address = urlopen('http://ifconfig.me/ip').read().rstrip()
     @export
     def get_ipaddress(self):
-
-        return ext_ip_address
+        return self.ext_ip_address
